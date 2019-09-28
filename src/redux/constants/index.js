@@ -1,0 +1,74 @@
+// SETTINGS CONSTANTS
+export const LOGO_BG = 'LOGO_BG';
+export const NAVBAR_BG = 'NAVBAR_BG';
+export const SIDEBAR_BG = 'SIDEBAR_BG';
+export const THEME = 'THEME';
+export const DIRECTION = 'DIRECTION';
+export const SIDEBAR_POSITION = 'SIDEBAR_POSITION';
+export const HEADER_POSITION = 'HEADER_POSITION';
+export const LAYOUT = 'LAYOUT';
+export const SIDEBAR_TYPE = 'SIDEBAR_TYPE';
+export const COUNTRIES = 'COUNTRIES';
+export const STORAGE_URL = 'STORAGE_URL';
+
+// CHAT CONSTANTS
+export const SELECTED_CHAT = 'SELECTED_CHAT';
+export const SEARCH_USER = 'SEARCH_USER';
+export const MSG_SUBMIT = 'MSG_SUBMIT';
+export const ADD_NEW_CHAT = 'ADD_NEW_CHAT';
+
+
+// CONTACT CONSTANTS
+export const ADD_CONTACT = 'ADD_CONTACT';
+export const UPDATE_CONTACT = 'UPDATE_CONTACT';
+export const CONTACT_DETAILS = 'CONTACT_DETAILS';
+export const EDIT_CONTACT = 'EDIT_CONTACT';
+export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
+export const FILTER_CONTACT = 'FILTER_CONTACT';
+export const TOGGLE_STARRED_CONTACT = 'TOGGLE_STARRED_CONTACT';
+export const DELETE_CONTACT = 'DELETE_CONTACT';
+
+// EMAIL CONSTANTS
+export const STAR_EMAIL = 'STAR_EMAIL';
+export const IMPORTANT_EMAIL = 'IMPORTANT_EMAIL';
+export const OPEN_EMAIL = 'OPEN_EMAIL';
+export const TRASH_EMAIL = 'TRASH_EMAIL';
+export const ASSIGN_FOLDER = 'ASSIGN_FOLDER';
+export const ASSIGN_LABEL = 'ASSIGN_LABEL';
+export const SET_SELECTED_EMAIL = 'SET_SELECTED_EMAIL';
+export const FILTER_EMAIL = 'FILTER_EMAIL';
+export const SET_EMAIL_VISIBILITY_FILTER = 'SET_EMAIL_VISIBILITY_FILTER';
+
+// AUTHENTICATION AND USER
+export const AUTH_TOKEN = 'AUTH_TOKEN';
+export const IS_LOGGED_IN = 'IS_LOGGED_IN';
+export const USER = 'USER';
+
+// PROPERTY
+export const PROPERTY = 'PROPERTY';
+export const PROPERTY_FACILITIES = 'PROPERTY_FACILITIES';
+
+// ROOMS
+export const ROOM_LIST = 'ROOM_LIST';
+export const ROOM_AMENITIES = 'ROOM_AMENITIES';
+export const ROOM_VIEWS = 'ROOM_VIEWS';
+export const EDIT_ROOM = 'EDIT_ROOM';
+
+//RATE_PLANS
+export const RATE_LIST = "RATE_LIST";
+export const EDIT_RATE = "EDIT_RATE";
+export const ROOM_CATEGORIES = "ROOM_CATEGORIES";
+export const MEAL_PLANS = "MEAL_PLANS";
+
+//PROMOTIONS
+export const PROMOTION_LIST = "PROMOTION_LIST";
+export const EDIT_PROMOTION = "EDIT_PROMOTION";
+export const PROMOTION_TYPES = "PROMOTION_TYPES";
+
+//AVAILABILITY
+export const AVAILABILITY_DATA ="AVAILABILITY_DATA";
+export const AVAILABILITY ="AVAILABILITY";
+export const DATA="DATA";
+
+//URLS
+export const URL = 'URL';

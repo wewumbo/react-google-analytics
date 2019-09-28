@@ -1,0 +1,138 @@
+.room-list {
+  .card {
+    .card-body {
+      flex: inherit;
+    }
+  }
+
+  .card-button {
+    height: 390px;
+    cursor: pointer;
+
+    @media (max-width: 576px) {
+      height: 390px;
+    }
+
+    img {
+      width: 20%;
+      margin: auto;
+      vertical-align: middle;
+    }
+    .card-title {
+      text-align: center;
+    }
+  }
+  .card-room {
+    height: 370px;
+
+    @media (max-width: 576px) {
+      height: 390px;
+    }
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+  }
+}
+
+.image-list-edit {
+  img {
+    width: 100%;
+    margin: auto;
+    vertical-align: top;
+  }
+
+  .center-delete-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    padding: 12px 24px;
+    border: 2px;
+    border-color: white;
+    border-style: solid;
+    cursor: pointer;
+    text-align: center;
+  }
+}
+
+.image-list-small-edit-v1 {
+  .logo {
+    width: 100%;
+    margin: auto;
+    vertical-align: top;
+  }
+
+  .logo-thumb {
+    position: absolute;
+    background-color: white;
+    padding: 5px;
+    width: 18%;
+    top: 21%;
+    left: 9%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+
+  .center-delete-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    padding: 12px 24px;
+    border: 2px;
+    border-color: white;
+    border-style: solid;
+    cursor: pointer;
+    text-align: center;
+  }
+}
+
+
+.image-list-small-edit {
+  img {
+    width: 100%;
+    margin: auto;
+    vertical-align: top;
+  }
+
+  .center-delete-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    padding: 12px 24px;
+    border: 2px;
+    border-color: white;
+    border-style: solid;
+    cursor: pointer;
+    text-align: center;
+  }
+}
+
+.customizer {
+  margin-top: 70px;
+}
+.show-service-panel {
+  width: 60%;
+}
+.add-room-pannel {
+  .nav-tabs {
+    margin-bottom: 2%;
+  }
+}
+.sc-chat-window {
+  height: calc(100% - 190px) !important;
+}
+.chat-window{
+  background-color:red !important;
+}
+
+.sc-launcher1 {
+  right: 100px !important;
+  bottom: 100px !important;
+}
+

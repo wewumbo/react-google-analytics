@@ -1,0 +1,108 @@
+.input-table {
+  width: 60px;
+  height: 25px;
+  margin: 0px;
+  padding: 0px
+}
+
+.no-padding {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.vertical-th-left {
+  width: 200px;
+  margin: 10px !important;
+}
+
+.btn-table-forward {
+  position: absolute;
+  top: 20px;
+  left: 95%;
+  z-index: 1000;
+}
+
+.btn-table-back {
+  position: absolute;
+  top: 20px;
+  left: 90%;
+  z-index: 1000;
+}
+
+.zui-table {
+  border: none;
+  border-right: solid 1px #DDEFEF;
+  border-collapse: separate;
+  border-spacing: 0;
+  font: normal 13px Arial, sans-serif;
+  width: 80%;
+}
+
+.zui-table thead th {
+  border: none;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+  font-weight: normal;
+  border: 1px solid white;
+  height: 100px;
+}
+
+.zui-table tbody td {
+  white-space: nowrap;
+  padding: 5px !important;
+  margin: 5px !important;
+  border: 1px solid #ddd;
+}
+
+.zui-wrapper {
+  position: relative;
+}
+
+.zui-scroller {
+  margin-left: 200px;
+  overflow-x: scroll;
+  overflow-y: visible;
+  padding-bottom: 5px;
+  width: 80%;
+}
+
+.zui-table .zui-sticky-col {
+  border-left: solid 1px #DDEFEF;
+  border-right: solid 1px #DDEFEF;
+  left: 0;
+  position: absolute;
+  top: auto;
+  width: 195px;
+}
+
+.table-left-headings-1 {
+  background-color: #546E7A;
+  color: white;
+  height: 30px;
+  border: 0px !important;
+}
+
+.table-left-headings {
+  border: 0px !important;
+}
+
+.left-top-th {
+  margin: 0px !important;
+  padding: 0px 0px 0px 5px !important;
+
+  button{
+    height: 97px;
+  }
+
+}
+
+.bg-blue-grey {
+  background-color : #607D8B !important;
+}
+
+.room-list{
+  padding: 10px;
+  background-color: white;
+}
