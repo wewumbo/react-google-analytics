@@ -25,9 +25,9 @@ class FourthDashboard extends React.Component {
 
   constructor(props) {
     super(props);
-    if(!this.props.auth.isLoggedIn){
-      this.props.history.push('/authentication/login');
-    }
+    // if(!this.props.auth.isLoggedIn){
+    //   this.props.history.push('/authentication/login');
+    // }
   }
   
   render() {

@@ -8,27 +8,7 @@ import {
   Row,
   Col
 } from 'reactstrap';
-
-import { GoogleProvider, GoogleDataChart } from 'react-analytics-widget'
-
-  ; (function (w, d, s, g, js, fjs) {
-    g = w.gapi || (w.gapi = {})
-    g.analytics = {
-      q: [],
-      ready: function (cb) {
-        this.q.push(cb)
-      }
-    }
-    js = d.createElement(s)
-    fjs = d.getElementsByTagName(s)[0]
-    js.src = "https://apis.google.com/js/platform.js"
-    fjs.parentNode.insertBefore(js, fjs)
-    js.onload = function () {
-      g.load("analytics")
-    }
-  })(window, document, "script")
-
-
+import { GoogleDataChart } from 'react-analytics-widget'
 
 // App credential in the google developer console
 var CLIENT_ID = "903248131682-lma81d5fvsmjuch17tca5lqkpgv8su52.apps.googleusercontent.com"
@@ -128,32 +108,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Availability extends React.Component {
-  componentDidMount = () => {
-    //Run command: php -S localhost:8088 -t ./ first with PHP source including
-    const request = new Request('http://localhost:8088', {
-      method: 'GET'
-    });
-    fetch(request)
-      .then(response => response.json())
-      .then(({access_token}) => {
-        console.log({access_token});
-        this.setState({access_token});
-      });
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      access_token: ''
-    };
-  }
 
   render() {
     return <div>
       <div className="room-list">
-        
-      <GoogleProvider accessToken={this.state.access_token}>
-      
         <Row>
           <Col md="12">
             <GoogleDataChart views={views} className="col-md-12" config={last30days} /> 
@@ -168,7 +126,6 @@ class Availability extends React.Component {
             <GoogleDataChart views={views} className="col-md-12" config={topCountriesGeo} />
           </Col>
         </Row>
-      </GoogleProvider>
       </div>
     </div>
   }

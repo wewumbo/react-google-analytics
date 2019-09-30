@@ -1,64 +1,72 @@
-import React from 'react';
-import { Card, CardBody, CardTitle } from 'reactstrap';
+import React from "react";
+import "../../../views/maps/vectormap.css";
+import { Row, Col } from "reactstrap";
+import { GoogleDataChart } from "react-analytics-widget";
 
-import chrome from '../../../assets/images/browser/chrome-logo.png';
-import firefox from '../../../assets/images/browser/firefox-logo.png';
-import safari from '../../../assets/images/browser/safari-logo.png';
-import ie from '../../../assets/images/browser/internet-logo.png';
-import opera from '../../../assets/images/browser/opera-logo.png';
-import edge from '../../../assets/images/browser/internet-logo.png';
+// analytics views ID
+const views = {
+  query: {
+    ids: "ga:84472028", // Replace with your Google Analytics ViewID
+    key: "dfdfdfdf"
+  }
+};
+var Browsers = {
+  reportType: "ga",
+  key: "",
+  query: {
+    dimensions: "ga:browser",
+    metrics: "ga:sessions",
+    "start-date": "2005-01-01",
+    "end-date": "yesterday"
+  },
+  chart: {
+    container: "chart-1-container",
+    type: "PIE",
+    options: {
+      width: "100%",
+      pieHole: 4 / 9
+    }
+  }
+};
 
-import BrowseData from './browsedata.js';
+// query: {
+//   metrics: 'ga:sessions',
+//   dimensions: 'ga:country',
+//   'start-date': '30daysAgo',
+//   'end-date': 'yesterday',
+//   'max-results': 6,
+//   sort: '-ga:sessions'
+// },
+// chart: {
+//   container: 'chart-1-container',
+//   type: 'PIE',
+//   options: {
+//     width: '100%',
+//     pieHole: 4/9
+//   }
+// }
 
-class BrowserStats extends React.Component {
+class Browers extends React.Component {
   render() {
     return (
-      /*--------------------------------------------------------------------------------*/
-      /* Used In Dashboard-4 and Widget Page                                            */
-      /*--------------------------------------------------------------------------------*/
-      <Card>
-        <CardBody>
-          <CardTitle className="mb-4">Browser Stats</CardTitle>
-          <BrowseData
-            image={chrome}
-            content="Google Chrome"
-            badge="23%"
-            badgeColor="danger"
-          />
-          <BrowseData
-            image={firefox}
-            content="Mozila Firefox"
-            badge="12%"
-            badgeColor="primary"
-          />
-          <BrowseData
-            image={safari}
-            content="Apple Safari"
-            badge="25%"
-            badgeColor="info"
-          />
-          <BrowseData
-            image={ie}
-            content="Internet Explorer"
-            badge="13%"
-            badgeColor="warning"
-          />
-          <BrowseData
-            image={opera}
-            content="Opera mini"
-            badge="03%"
-            badgeColor="success"
-          />
-          <BrowseData
-            image={edge}
-            content="Microsoft edge"
-            badge="73%"
-            badgeColor="info"
-          />
-        </CardBody>
-      </Card>
+      <div>
+        <div
+          className="room-list"
+          style={{ overflow: "scroll", maxHeight: "600px" }}
+        >
+          <Row>
+            <Col md="12">
+              <GoogleDataChart
+                views={views}
+                className="col-md-12"
+                config={Browsers}
+              />
+            </Col>
+          </Row>
+        </div>
+      </div>
     );
   }
 }
 
-export default BrowserStats;
+export default Browers;

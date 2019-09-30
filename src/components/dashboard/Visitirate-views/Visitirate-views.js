@@ -1,87 +1,105 @@
-import React from 'react';
-import { CardGroup, Card, CardBody } from 'reactstrap';
+import React from "react";
 
-import { Bar } from 'react-chartjs-2';
+import { Row, Col } from "reactstrap";
+import { GoogleDataChart } from "react-analytics-widget";
 
-let barData1 = {
-  labels: ['1', '2', '3', '4', '5', '6', '7'],
-  datasets: [
-    {
-      label: 'A',
-      backgroundColor: 'rgb(79, 195, 247)',
-      borderColor: 'rgb(79, 195, 247)',
-      data: [4, 5, 2, 10, 9, 12, 4]
-    }
-  ]
+// analytics views ID
+const views = {
+  query: {
+    ids: "ga:84472028", // Replace with your Google Analytics ViewID
+    key: "dfdfdfdf"
+  }
 };
 
-let barData2 = {
-  labels: ['1', '2', '3', '4', '5', '6', '7'],
-  datasets: [
-    {
-      label: 'B',
-      backgroundColor: 'rgb(116, 96, 238)',
-      borderColor: 'rgb(116, 96, 238)',
-      data: [2, 5, 4, 6, 8, 5, 4]
-    }
-  ]
-};
-
-let barData3 = {
-  labels: ['1', '2', '3', '4', '5', '6', '7'],
-  datasets: [
-    {
-      label: 'C',
-      backgroundColor: 'rgb(30, 136, 229)',
-      borderColor: 'rgb(30, 136, 229)',
-      data: [3, 4, 5, 6, 4, 5, 3]
-    }
-  ]
-};
-
-let barData4 = {
-  labels: ['1', '2', '3', '4', '5', '6', '7'],
-  datasets: [
-    {
-      label: 'D',
-      backgroundColor: 'rgb(252, 75, 108)',
-      borderColor: 'rgb(252, 75, 108)',
-      data: [4, 5, 2, 10, 9, 12, 4]
-    }
-  ]
-};
-
-let barOptions = {
-  scales: {
-    xAxes: [
-      {
-        gridLines: {
-          display: false,
-          drawBorder: false
-        },
-        ticks: {
-          display: false
-        },
-        barThickness: 8
-      }
-    ],
-
-    yAxes: [
-      {
-        gridLines: {
-          display: false,
-          drawBorder: false
-        },
-        ticks: {
-          display: false
-        }
-      }
-    ]
+// graph 1 config
+const uniquePerson = {
+  reportType: "ga",
+  query: {
+    metrics: "ga:uniquePageviews",
+    dimensions: "ga:userType",
+    "start-date": "2005-01-01",
+    "end-date": "yesterday"
   },
-  legend: {
-    display: false,
-    labels: {
-      fontColor: 'rgb(255, 99, 132)'
+  chart: {
+    type: "COLUMN",
+    options: {
+      // options for google charts
+      // https://google-developers.appspot.com/chart/interactive/docs/gallery
+      title: "Unique Visited",
+      width: "100%",
+      hAxis: {
+        title: "Unique Visited"
+      }
+    }
+  }
+};
+// graph 2 config
+const totalVisit = {
+  reportType: "ga",
+  query: {
+    dimensions: "ga:userType",
+    metrics: "ga:sessions",
+    "start-date": "2005-01-01",
+    "end-date": "yesterday"
+  },
+  chart: {
+    type: "COLUMN",
+    options: {
+      // options for google charts
+      // https://google-developers.appspot.com/chart/interactive/docs/gallery
+      title: "Total Visit",
+      width: "100%",
+      hAxis: {
+        title: "Total Visit"
+      }
+    }
+  }
+};
+
+// graph 4  config
+
+const pageViews = {
+  reportType: "ga",
+  query: {
+    dimensions: "ga:userType",
+    metrics: "ga:pageviews",
+    "start-date": "2005-01-01",
+    "end-date": "yesterday"
+  },
+  chart: {
+    type: "COLUMN",
+    options: {
+      // options for google charts
+      // https://google-developers.appspot.com/chart/interactive/docs/gallery
+      title: "Page Views",
+      width: "100%",
+      hAxis: {
+        title: "Page Views"
+      }
+    }
+  }
+};
+
+// graph 3 config
+
+const bouncesView = {
+  reportType: "ga",
+  query: {
+    dimensions: "ga:userType",
+    metrics: "ga:bounces",
+    "start-date": "2005-01-01",
+    "end-date": "yesterday"
+  },
+  chart: {
+    type: "COLUMN",
+    options: {
+      // options for google charts
+      // https://google-developers.appspot.com/chart/interactive/docs/gallery
+      title: "Bounces Rate",
+      width: "100%",
+      hAxis: {
+        title: "Bounces Rate"
+      }
     }
   }
 };
@@ -89,85 +107,40 @@ let barOptions = {
 class VisitrateView extends React.Component {
   render() {
     return (
-      /*--------------------------------------------------------------------------------*/
-      /* Used In Dashboard-4                                                            */
-      /*--------------------------------------------------------------------------------*/
-      <CardGroup>
-        <Card>
-          <CardBody className="text-center">
-            <h4 className="text-center">Unique Visit</h4>
-            <div style={{ width: '100px', margin: '0 auto' }}>
-              <Bar
-                data={barData1}
-                width={100}
-                height={100}
-                options={barOptions}
+      <div>
+        <div className="room-list">
+          <Row>
+            <Col md="3">
+              <GoogleDataChart
+                views={views}
+                className="col-md-12"
+                config={uniquePerson}
               />
-            </div>
-          </CardBody>
-          <div className="p-2 border-top text-center">
-            <h4 className="font-medium mb-0">
-              <i className="ti-angle-up text-success" /> 12456
-            </h4>
-          </div>
-        </Card>
-
-        <Card>
-          <CardBody className="text-center">
-            <h4 className="text-center">Total Visit</h4>
-            <div style={{ width: '100px', margin: '0 auto' }}>
-              <Bar
-                data={barData2}
-                width={100}
-                height={100}
-                options={barOptions}
+            </Col>
+            <Col md="3">
+              <GoogleDataChart
+                views={views}
+                className="col-md-12"
+                config={totalVisit}
               />
-            </div>
-          </CardBody>
-          <div className="p-2 border-top text-center">
-            <h4 className="font-medium mb-0">
-              <i className="ti-angle-down text-primary" /> 456
-            </h4>
-          </div>
-        </Card>
-        <Card>
-          <CardBody className="text-center">
-            <h4 className="text-center">Bounce rate</h4>
-            <div style={{ width: '100px', margin: '0 auto' }}>
-              <Bar
-                data={barData3}
-                width={100}
-                height={100}
-                options={barOptions}
+            </Col>
+            <Col md="3">
+              <GoogleDataChart
+                views={views}
+                className="col-md-12"
+                config={bouncesView}
               />
-            </div>
-          </CardBody>
-          <div className="p-2 border-top text-center">
-            <h4 className="font-medium mb-0">
-              <i className="ti-angle-up text-info" /> 12456
-            </h4>
-          </div>
-        </Card>
-
-        <Card>
-          <CardBody className="text-center">
-            <h4 className="text-center">Page Views</h4>
-            <div style={{ width: '100px', margin: '0 auto' }}>
-              <Bar
-                data={barData4}
-                width={100}
-                height={100}
-                options={barOptions}
+            </Col>
+            <Col md="3">
+              <GoogleDataChart
+                views={views}
+                className="col-md-12"
+                config={pageViews}
               />
-            </div>
-          </CardBody>
-          <div className="p-2 border-top text-center">
-            <h4 className="font-medium mb-0">
-              <i className="ti-angle-down text-danger" /> 456
-            </h4>
-          </div>
-        </Card>
-      </CardGroup>
+            </Col>
+          </Row>
+        </div>
+      </div>
     );
   }
 }
