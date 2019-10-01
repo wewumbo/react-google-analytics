@@ -24,9 +24,11 @@ import { GoogleProvider } from "react-analytics-widget";
 function App() {
   const [token, setToken] = useState("");
 
+  //Run command: php -S localhost:8088 -t ./ first with PHP source including
+  const urlAPI = "http://localhost:8088";
+
   useEffect(() => {
-    //Run command: php -S localhost:8088 -t ./ first with PHP source including
-    const request = new Request("http://localhost:8088", {
+    const request = new Request(urlAPI, {
       method: "GET"
     });
     fetch(request)
