@@ -4,9 +4,11 @@ import { Row, Col } from "reactstrap";
 import { GoogleDataChart } from "react-analytics-widget";
 
 // analytics views ID
+const viewID = "ga:198905915";
+
 const views = {
   query: {
-    ids: "ga:84472028", // Replace with your Google Analytics ViewID
+    ids: viewID, // Replace with your Google Analytics ViewID
     key: "dfdfdfdf"
   }
 };
@@ -17,7 +19,7 @@ const uniquePerson = {
   query: {
     metrics: "ga:uniquePageviews",
     dimensions: "ga:userType",
-    "start-date": "2005-01-01",
+    "start-date": "2017-01-01",
     "end-date": "yesterday"
   },
   chart: {
@@ -39,7 +41,7 @@ const totalVisit = {
   query: {
     dimensions: "ga:userType",
     metrics: "ga:sessions",
-    "start-date": "2005-01-01",
+    "start-date": "2007-01-01",
     "end-date": "yesterday"
   },
   chart: {
@@ -47,10 +49,10 @@ const totalVisit = {
     options: {
       // options for google charts
       // https://google-developers.appspot.com/chart/interactive/docs/gallery
-      title: "Total Visit",
+      title: "Total Visits",
       width: "100%",
       hAxis: {
-        title: "Total Visit"
+        title: "Total Visits"
       }
     }
   }
@@ -63,7 +65,7 @@ const pageViews = {
   query: {
     dimensions: "ga:userType",
     metrics: "ga:pageviews",
-    "start-date": "2005-01-01",
+    "start-date": "2007-01-01",
     "end-date": "yesterday"
   },
   chart: {
@@ -87,7 +89,7 @@ const bouncesView = {
   query: {
     dimensions: "ga:userType",
     metrics: "ga:bounces",
-    "start-date": "2005-01-01",
+    "start-date": "2007-01-01",
     "end-date": "yesterday"
   },
   chart: {

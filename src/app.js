@@ -25,7 +25,8 @@ function App() {
   const [token, setToken] = useState("");
 
   //Run command: php -S localhost:8088 -t ./ first with PHP source including
-  const urlAPI = "http://localhost:8088";
+  const urlAPI =
+    "https://manager1.travelhubasia.com/api/googlekey?api_token=3148fa507020fa9702c74aeba608ca6660878800ebe96aaeec4eaa41ac69c0b7";
 
   useEffect(() => {
     const request = new Request(urlAPI, {

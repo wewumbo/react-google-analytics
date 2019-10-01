@@ -4,9 +4,11 @@ import { Row, Col } from "reactstrap";
 import { GoogleDataChart } from "react-analytics-widget";
 
 // analytics views ID
+const viewID = "ga:198905915";
+
 const views = {
   query: {
-    ids: "ga:84472028", // Replace with your Google Analytics ViewID
+    ids: viewID, // Replace with your Google Analytics ViewID
     key: "dfdfdfdf"
   }
 };

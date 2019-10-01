@@ -4,9 +4,11 @@ import { Row, Col } from "reactstrap";
 import { GoogleDataChart } from "react-analytics-widget";
 
 // analytics views ID
+const viewID = "ga:198905915";
+
 const views = {
   query: {
-    ids: "ga:84472028", // Replace with your Google Analytics ViewID
+    ids: viewID, // Replace with your Google Analytics ViewID
     key: "dfdfdfdf"
   }
 };
@@ -16,7 +18,7 @@ var Browsers = {
   query: {
     dimensions: "ga:browser",
     metrics: "ga:sessions",
-    "start-date": "2005-01-01",
+    "start-date": "2017-01-01",
     "end-date": "yesterday"
   },
   chart: {
@@ -28,23 +30,6 @@ var Browsers = {
     }
   }
 };
-
-// query: {
-//   metrics: 'ga:sessions',
-//   dimensions: 'ga:country',
-//   'start-date': '30daysAgo',
-//   'end-date': 'yesterday',
-//   'max-results': 6,
-//   sort: '-ga:sessions'
-// },
-// chart: {
-//   container: 'chart-1-container',
-//   type: 'PIE',
-//   options: {
-//     width: '100%',
-//     pieHole: 4/9
-//   }
-// }
 
 class Browers extends React.Component {
   render() {
