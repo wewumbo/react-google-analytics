@@ -52,7 +52,7 @@ class Browers extends React.Component {
       <div>
         <div
           className="room-list"
-          style={{ overflow: "scroll", maxHeight: "600px" }}
+          style={{ overflow: "scroll", maxHeight: "600px", marginTop: "50px" }}
         >
           <Row>
             <Col md="12">
