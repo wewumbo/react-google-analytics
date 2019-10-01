@@ -12,7 +12,7 @@ const views = {
 };
 var revenue = {
   query: {
-    metrics: "ga:sessions",
+    metrics: "ga:transactionRevenue",
     dimensions: "ga:year",
     "start-date": "2005-01-01",
     "end-date": "yesterday"
