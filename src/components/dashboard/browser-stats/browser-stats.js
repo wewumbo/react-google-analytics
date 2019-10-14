@@ -14,17 +14,20 @@ const views = {
 };
 var Browsers = {
   reportType: "ga",
-  key: "",
   query: {
-    dimensions: "ga:browser",
     metrics: "ga:sessions",
-    "start-date": "2017-01-01",
-    "end-date": "yesterday"
+    // filters: "ga:source==tamarindlake.lk",
+    dimensions: "ga:country",
+    "start-date": "2019-01-01",
+    "end-date": "yesterday",
+    "max-results": 6,
+    sort: "-ga:sessions"
   },
   chart: {
     container: "chart-1-container",
     type: "PIE",
     options: {
+      title: "Top Countries by Sessions",
       width: "100%",
       pieHole: 4 / 9
     }
