@@ -1891,7 +1891,10 @@ class Avl extends React.Component {
 
         <Card>
           <CardBody className="">
-            <h5 className="mb-3">Availability</h5>
+            <div className="text-primary">
+              <i className="mr-2 mdi mdi-alert-circle-outline"></i>You are
+              adding Tax Included Rate
+            </div>
             {filterData.days.length === 0 ? (
               <div style={{ display: "flex", justifyContent: "center" }}>
                 No Data
@@ -1909,23 +1912,29 @@ class Avl extends React.Component {
                         <th className="zui-sticky-col left-top-th">
                           <Button
                             className="btn"
-                            color="success"
+                            color="info"
                             onClick={this.onClickSave.bind(this)}
                             style={{
-                              width: "140px",
+                              width: "195px",
                               height: "35px",
                               marginTop: "20px",
                               marginRight: "50px"
                             }}
                           >
-                            <i className="mr-2 mdi mdi-content-save"></i>
-                            Save
+                            <div style={{ display: "flex" }}>
+                              <div
+                                style={{ width: "30px", marginRight: "50px" }}
+                              >
+                                <i className="mr-2 mdi mdi-content-save"></i>
+                              </div>
+                              Save
+                            </div>
                           </Button>
                           <a
                             href="#"
                             onClick={this.onClickLeft.bind(this)}
                             id="left-button"
-                            class="btn btn-float btn-square btn-success btn-table-back"
+                            class="btn btn-float btn-square btn-info btn-table-back"
                           >
                             <i className="fa fa-chevron-left"></i>
                           </a>
@@ -1950,7 +1959,7 @@ class Avl extends React.Component {
                       {filterData.data_grid.map(category => {
                         return (
                           <React.Fragment>
-                            <tr>
+                            {/* <tr>
                               <td className="table-left-headings-1 zui-sticky-col">
                                 {category.name} - (No.rooms)
                               </td>
@@ -1973,31 +1982,88 @@ class Avl extends React.Component {
                                   </td>
                                 );
                               })}
-                            </tr>
+                            </tr> */}
                             {category.room_rates.map(rate => {
                               return (
-                                <tr>
-                                  <td className="table-left-headings zui-sticky-col">
-                                    {rate.name}
-                                  </td>
-                                  {filterData.days.map(day => {
-                                    return (
-                                      <td>
-                                        <div className="col-md-3 no-padding">
-                                          <input
-                                            onChange={this.handleOnRateChange.bind(
-                                              this,
-                                              rate._id.$oid,
-                                              day[4]
-                                            )}
-                                            defaultValue={rate.prices[day[4]]}
-                                            class="form-control input-table"
-                                          ></input>
+                                <React.Fragment>
+                                  <tr>
+                                    <td
+                                      className="table-left-headings zui-sticky-col"
+                                      style={{ width: "309px" }}
+                                    >
+                                      <div
+                                        style={{
+                                          display: "flex",
+                                          justifyContent: "space-between",
+                                          color: "white"
+                                        }}
+                                      >
+                                        <div className="column-first-name">
+                                          {rate.name}
                                         </div>
-                                      </td>
-                                    );
-                                  })}
-                                </tr>
+                                        <div className="column-first-available">
+                                          Availability
+                                          <i className="mr-2 mdi mdi-chevron-double-right"></i>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    {filterData.days.map(day => {
+                                      return (
+                                        <td style={{ background: "#19b19a" }}>
+                                          <div className="col-md-3 no-padding">
+                                            <input
+                                              onChange={this.handleOnRateChange.bind(
+                                                this,
+                                                rate._id.$oid,
+                                                day[4]
+                                              )}
+                                              defaultValue={rate.prices[day[4]]}
+                                              class="form-control input-table"
+                                            ></input>
+                                          </div>
+                                        </td>
+                                      );
+                                    })}
+                                  </tr>
+                                  <tr>
+                                    <td
+                                      className="table-left-headings zui-sticky-col"
+                                      style={{ width: "309px" }}
+                                    >
+                                      <div
+                                        style={{
+                                          display: "flex",
+                                          justifyContent: "space-between"
+                                        }}
+                                      >
+                                        <div className="column-second-name">
+                                          {rate.meal_plan}
+                                        </div>
+                                        <div className="column-second-rate">
+                                          USD Rate
+                                          <i className="mr-2 mdi mdi-chevron-double-right"></i>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    {filterData.days.map(day => {
+                                      return (
+                                        <td>
+                                          <div className="col-md-3 no-padding">
+                                            <input
+                                              onChange={this.handleOnRateChange.bind(
+                                                this,
+                                                rate._id.$oid,
+                                                day[4]
+                                              )}
+                                              defaultValue={rate.prices[day[4]]}
+                                              class="form-control input-table"
+                                            ></input>
+                                          </div>
+                                        </td>
+                                      );
+                                    })}
+                                  </tr>
+                                </React.Fragment>
                               );
                             })}
                           </React.Fragment>
@@ -2007,7 +2073,7 @@ class Avl extends React.Component {
                         href="#"
                         onClick={this.onClickRight.bind(this)}
                         id="right-button"
-                        className="btn btn-float btn-square btn-success btn-table-forward"
+                        className="btn btn-float btn-square btn-info btn-table-forward"
                       >
                         <i className="fa fa-chevron-right"></i>
                       </a>

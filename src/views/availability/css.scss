@@ -2,7 +2,8 @@
   width: 60px;
   height: 25px;
   margin: 0px;
-  padding: 0px
+  padding: 0px;
+  text-align: center;
 }
 
 .no-padding {
@@ -18,14 +19,14 @@
 .btn-table-forward {
   position: absolute;
   top: 20px;
-  left: 95%;
+  left: 99%;
   z-index: 1000;
 }
 
 .btn-table-back {
   position: absolute;
   top: 20px;
-  left: 90%;
+  left: 140%;
   z-index: 1000;
 }
 
@@ -61,7 +62,7 @@
 }
 
 .zui-scroller {
-  margin-left: 200px;
+  margin-left: 310px;
   overflow-x: scroll;
   overflow-y: visible;
   padding-bottom: 5px;
@@ -105,4 +106,40 @@
 .room-list {
   padding: 10px;
   background-color: white;
+}
+
+
+
+.column-first-name {
+  width: 202px;
+  background: #19b19a;
+  height: 37px;
+  padding: 10px 35px;
+  margin-top: -10px;
+
+}
+
+
+.column-first-available {
+  width: 95px;
+  background: #19b19a;
+  height: 37px;
+  padding: 10px 12px;
+  margin-top: -10px;
+}
+
+.column-second-name {
+  width: 202px;
+  height: 37px;
+  padding: 10px 35px;
+  margin-top: -10px;
+
+}
+
+.column-second-rate {
+  width: 95px;
+  height: 37px;
+  padding: 10px 12px;
+  margin-top: -10px;
+
 }
