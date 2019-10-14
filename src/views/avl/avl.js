@@ -1915,7 +1915,7 @@ class Avl extends React.Component {
                             color="info"
                             onClick={this.onClickSave.bind(this)}
                             style={{
-                              width: "195px",
+                              width: "245px",
                               height: "35px",
                               marginTop: "20px",
                               marginRight: "50px"
@@ -1927,7 +1927,7 @@ class Avl extends React.Component {
                               >
                                 <i className="mr-2 mdi mdi-content-save"></i>
                               </div>
-                              Save
+                              Save Changes
                             </div>
                           </Button>
                           <a
@@ -1947,8 +1947,6 @@ class Avl extends React.Component {
                               <strong>{item[1]}</strong>
                               <br />
                               {item[2]}
-                              <br />
-                              {item[3]}
                               <br />
                             </th>
                           );
