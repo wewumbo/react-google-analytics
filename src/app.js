@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore } from "./redux/store";
 import { GoogleProvider } from "react-analytics-widget";
+
+import "antd/dist/antd.css";
+
 (function(w, d, s, g, js, fjs) {
   g = w.gapi || (w.gapi = {});
   g.analytics = {

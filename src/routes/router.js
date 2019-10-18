@@ -104,6 +104,7 @@ import RatePlans from '../views/rate-plans/rate-plans';
 import Promotions from '../views/promotions/promotions';
 import Availability from '../views/availability/availability';
 import Avl from '../views/avl/avl';
+import Booking from '../views/booking/avl';
 import MyProperty from '../views/my-property/my-property';
 
 var auths = [].concat(AuthRoutes);
@@ -162,6 +163,12 @@ var ThemeRoutes = [
 		name: 'Avl',
 		icon: 'mdi mdi-account-circle',
 		component: Avl
+	},
+	{
+		path: '/booking',
+		name: 'Booking New',
+		icon: 'mdi mdi-account-circle',
+		component: Booking
 	},
 	{
 		path: '/dashboards/dashboard4',
