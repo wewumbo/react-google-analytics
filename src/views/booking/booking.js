@@ -8,13 +8,16 @@ import {
   DatePicker,
   Modal
 } from "antd";
+import axios from "axios";
 import Highlighter from "react-highlight-words";
 import { Card, CardBody } from "reactstrap";
 import Select from "react-select";
+import moment from "moment";
 
 const { Option } = SelectAnt;
 const { RangePicker } = DatePicker;
 
+// Options Value for select
 const optionsStatus = [
   { value: "Cancelled", label: "Cancelled" },
   { value: "Confirmed", label: "Confirmed" },
@@ -32,118 +35,27 @@ const optionsBookingBy = [
   { value: "Value", label: "Value" }
 ];
 
-const data = [
-  {
-    booking_id: "1212",
-    customer_name: "Test Test",
-    check_in_date: "2019-09-12",
-    price: 75.6,
-    source: "OTA",
-    channel_website: "http://www.layahotels.lk/layabeach.php",
-    agent: "",
-    country: "",
-    status: "settled",
-    booking_date: "2019-08-03 11:37:39",
-    check_out_date: "2019-09-13"
-  },
-  {
-    booking_id: "1236",
-    customer_name: "dinesh dicamdugoda",
-    check_in_date: "2019-08-10",
-    price: 75.6,
-    source: "OTA",
-    channel_website: "http://www.layahotels.lk/layabeach.php",
-    agent: "",
-    country: "",
-    status: "settled",
-    booking_date: "2019-08-10 07:59:52",
-    check_out_date: "2019-08-11"
-  },
-  {
-    booking_id: "1237",
-    customer_name: "dinesh eranga",
-    check_in_date: "2019-08-10",
-    price: 75.6,
-    source: "OTA",
-    channel_website: "http://www.layahotels.lk/layabeach.php",
-    agent: "",
-    country: "",
-    status: "settled",
-    booking_date: "2019-08-10 08:56:01",
-    check_out_date: "2019-08-11"
-  },
-  {
-    booking_id: "1179",
-    customer_name: "First Name Last name",
-    check_in_date: "2019-07-29",
-    price: 607.5,
-    source: "OTA",
-    channel_website: "http://www.layahotels.lk/layabeach.php",
-    agent: "",
-    country: "",
-    status: "settled",
-    booking_date: "2019-07-27 16:34:32",
-    check_out_date: "2019-07-30"
-  },
-  {
-    booking_id: "1180",
-    customer_name: "First Name Last name",
-    check_in_date: "2019-07-29",
-    price: 607.5,
-    source: "OTA",
-    channel_website: "http://www.layahotels.lk/layabeach.php",
-    agent: "",
-    country: "",
-    status: "settled",
-    booking_date: "2019-07-27 16:39:55",
-    check_out_date: "2019-07-30"
-  },
-  {
-    booking_id: "1181",
-    customer_name: "First Name Last name",
-    check_in_date: "2019-07-29",
-    price: 607.5,
-    source: "OTA",
-    channel_website: "http://www.layahotels.lk/layabeach.php",
-    agent: "",
-    country: "",
-    status: "settled",
-    booking_date: "2019-07-27 16:40:03",
-    check_out_date: "2019-07-30"
-  },
-  {
-    booking_id: "1168",
-    customer_name: "Abiserck Mathanasegar",
-    check_in_date: "2019-07-27",
-    price: 121.5,
-    source: "OTA",
-    channel_website: "http://www.layahotels.lk/layabeach.php",
-    agent: "",
-    country: "",
-    status: "settled",
-    booking_date: "2019-07-26 10:30:58",
-    check_out_date: "2019-07-28"
-  },
-  {
-    booking_id: "1012",
-    customer_name: "Janith vinu",
-    check_in_date: "",
-    price: 0,
-    source: "OTA",
-    channel_website: "",
-    agent: "",
-    country: "",
-    status: "settled",
-    booking_date: "2019-06-15 11:43:11",
-    check_out_date: ""
-  }
-];
-
 export default class App extends React.Component {
   state = {
-    searchText: ""
+    searchText: "",
+    data: []
   };
 
+  componentDidMount() {
+    this.loadList();
+  }
+
+  // call API to load data. Set data into state
+  async loadList() {
+    const response = await axios.post(
+      "http://testdomain.com/api/bookings/list?api_token=fbdf3682a43f9de7629e2bc9a2888fa698a01aca71214ec94198bd9b9019c5a1&page=1&per_page=99999"
+    );
+
+    const data = response.data;
+    this.setState({ data: data });
+  }
+
+  // Search Filter
   getColumnSearchProps = dataIndex => ({
     filterDropdown: ({
       setSelectedKeys,
@@ -206,6 +118,7 @@ export default class App extends React.Component {
     )
   });
 
+  // Show detail Booking
   showModalDetail = data => {
     Modal.info({
       title: "Detail Booking",
@@ -244,7 +157,8 @@ export default class App extends React.Component {
         title: "Booking ID",
         dataIndex: "booking_id",
         key: "booking_id",
-        sorter: true,
+        sorter: (a, b) =>
+          parseInt(a.booking_id, 10) - parseInt(b.booking_id, 10),
         width: "10%",
         ...this.getColumnSearchProps("booking_id")
       },
@@ -252,7 +166,15 @@ export default class App extends React.Component {
         title: "Customer Name",
         dataIndex: "customer_name",
         key: "customer_name",
-        sorter: true,
+        sorter: (a, b) => {
+          if (a.customer_name.toLowerCase() < b.customer_name.toLowerCase()) {
+            return -1;
+          }
+          if (a.customer_name.toLowerCase() > b.customer_name.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        },
         width: "10%",
         ...this.getColumnSearchProps("customer_name")
       },
@@ -260,7 +182,9 @@ export default class App extends React.Component {
         title: "Check in Date",
         dataIndex: "check_in_date",
         key: "check_in_date",
-        sorter: true,
+        sorter: (a, b) =>
+          moment(a.check_in_date, "YYYY-MM-DD") -
+          moment(b.check_in_date, "YYYY-MM-DD"),
         width: "10%",
         ...this.getColumnSearchProps("check_in_date")
       },
@@ -268,7 +192,7 @@ export default class App extends React.Component {
         title: "Price",
         dataIndex: "price",
         key: "price",
-        sorter: true,
+        sorter: (a, b) => a.price - b.price,
         width: "10%",
         ...this.getColumnSearchProps("price")
       },
@@ -276,7 +200,15 @@ export default class App extends React.Component {
         title: "Source",
         dataIndex: "source",
         key: "source",
-        sorter: true,
+        sorter: (a, b) => {
+          if (a.source.toLowerCase() < b.source.toLowerCase()) {
+            return -1;
+          }
+          if (a.source.toLowerCase() > b.source.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        },
         width: "10%",
         ...this.getColumnSearchProps("source")
       },
@@ -284,7 +216,15 @@ export default class App extends React.Component {
         title: "Channel Website",
         dataIndex: "channel_website",
         key: "channel_website",
-        sorter: true,
+        sorter: (a, b) => {
+          if (a.agent.toLowerCase() < b.agent.toLowerCase()) {
+            return -1;
+          }
+          if (a.agent.toLowerCase() > b.agent.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        },
         width: "10%",
         ...this.getColumnSearchProps("channel_website")
       },
@@ -293,7 +233,15 @@ export default class App extends React.Component {
         dataIndex: "agent",
         key: "agent",
         width: "10%",
-        sorter: true,
+        sorter: (a, b) => {
+          if (a.agent.toLowerCase() < b.agent.toLowerCase()) {
+            return -1;
+          }
+          if (a.agent.toLowerCase() > b.agent.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        },
         ...this.getColumnSearchProps("agent")
       },
       {
@@ -301,14 +249,30 @@ export default class App extends React.Component {
         dataIndex: "country",
         key: "country",
         width: "10%",
-        sorter: true,
+        sorter: (a, b) => {
+          if (a.country.toLowerCase() < b.country.toLowerCase()) {
+            return -1;
+          }
+          if (a.country.toLowerCase() > b.country.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        },
         ...this.getColumnSearchProps("country")
       },
       {
         title: "Status",
         dataIndex: "status",
         width: "10%",
-        sorter: true,
+        sorter: (a, b) => {
+          if (a.status.toLowerCase() < b.status.toLowerCase()) {
+            return -1;
+          }
+          if (a.status.toLowerCase() > b.status.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        },
         ...this.getColumnSearchProps("status"),
         render: (text, record, index) => (
           <div
@@ -329,7 +293,9 @@ export default class App extends React.Component {
         dataIndex: "booking_date",
         key: "booking_date",
         width: "10%",
-        sorter: true,
+        sorter: (a, b) =>
+          moment(a.check_in_date, "YYYY-MM-DD hh:mm:ss") -
+          moment(b.check_in_date, "YYYY-MM-DD hh:mm:ss"),
         ...this.getColumnSearchProps("booking_date")
       },
       {
@@ -448,7 +414,9 @@ export default class App extends React.Component {
               entries
             </div>
           </div>
-          <Table columns={columns} dataSource={data} />
+
+          {/* Please update data with get API in here */}
+          <Table columns={columns} dataSource={this.state.data} />
         </CardBody>
       </Card>
     );
