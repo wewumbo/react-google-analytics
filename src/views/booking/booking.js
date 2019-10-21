@@ -35,6 +35,36 @@ const optionsBookingBy = [
   { value: "Value", label: "Value" }
 ];
 
+// Data Sample
+// const data = [
+//   {
+//     booking_id: "1212",
+//     customer_name: "Test Test",
+//     check_in_date: "2019-09-12",
+//     price: 75.6,
+//     source: "OTA",
+//     channel_website: "http://www.layahotels.lk/layabeach.php",
+//     agent: "",
+//     country: "",
+//     status: "settled",
+//     booking_date: "2019-08-03 11:37:39",
+//     check_out_date: "2019-09-13"
+//   },
+//   {
+//     booking_id: "1236",
+//     customer_name: "dinesh dicamdugoda",
+//     check_in_date: "2019-08-10",
+//     price: 75.6,
+//     source: "OTA",
+//     channel_website: "http://www.layahotels.lk/layabeach.php",
+//     agent: "",
+//     country: "",
+//     status: "settled",
+//     booking_date: "2019-08-10 07:59:52",
+//     check_out_date: "2019-08-11"
+//   }
+// ];
+
 export default class App extends React.Component {
   state = {
     searchText: "",
